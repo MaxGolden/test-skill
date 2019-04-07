@@ -2,7 +2,7 @@ import random
 from os.path import dirname, join
 
 from adapt.intent import IntentBuilder
-from mycroft import MycroftSkill, intent_handler
+from mycroft import MycroftSkill, intent_handler, intent_file_handler
 from mycroft.skills.audioservice import AudioService
 from mycroft.audio import wait_while_speaking
 from mycroft.util.parse import extract_datetime
@@ -79,7 +79,7 @@ class WhitenoiseSkill(MycroftSkill):
         except Exception as e:
             self.log.error("Error: {0}".format(e))
 
-    @intent_handler(IntentBuilder('').require('whitenoise.time.intent'))
+    @intent_file_handler('whitenoise.time.intent')
     def handle_whitenoise_time(self, message):
         utterance = message.data.get('utterance')
 
