@@ -1,0 +1,12 @@
+{
+  "utterance": "play white noise for me",
+  "intent_type": "handle_whitenoise",
+  "intent": {
+    "Whitenoise": "whitenoise"
+  },
+  "expected_data": {
+      "__type__": "mycroft.audio.service.play"
+  }
+}
+
+
