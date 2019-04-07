@@ -131,9 +131,6 @@ class WhitenoiseSkill(MycroftSkill):
             # Stop recording
             self.stop_process(self.process)
             self.process = None
-            # Calc actual recording duration
-            self.settings["duration"] = (now_local() -
-                                         self.start_time).total_seconds()
 
     def stop(self):
         if self.process:
