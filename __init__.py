@@ -98,8 +98,8 @@ class WhitenoiseSkill(MycroftSkill):
                                        lang=self.lang)
             self.speak_dialog('whitenoise.response.time', {'duration': time_for})
             wait_while_speaking()
-            self.audioservice.play(path)
-            # self.process = play_mp3(self.play_list_all[0])
+            # self.audioservice.play(path)
+            self.process = play_mp3(self.play_list_rain[0])
 
             self.enclosure.eyes_color(255, 0, 0)  # set color red
             self.last_index = 24
