@@ -76,7 +76,9 @@ class WhitenoiseSkill(MycroftSkill):
         try:
             self.speak_dialog('whitenoise.response')
             wait_while_speaking()
-            self.audioservice.play(path)
+            # self.audioservice.play(path)
+            self.process = play_mp3(self.play_list_all[0])
+
         except Exception as e:
             self.log.error("Error: {0}".format(e))
 
@@ -118,6 +120,11 @@ class WhitenoiseSkill(MycroftSkill):
         # Show recording countdown
         self.render_countdown(255, 0, 0)
 
+        if self.process.poll() is None:
+            path1 = random.choice(self.play_list_all)
+        else:
+            self.end_whitenoise()
+
     def end_whitenoise(self):
 
         if self.process:
@@ -129,10 +136,10 @@ class WhitenoiseSkill(MycroftSkill):
                                          self.start_time).total_seconds()
 
     def stop(self):
-        if self.process and self.process.poll() is None:
-            self.speak_dialog('whitenoise.stop')
-            self.process.terminate()
-            self.process.wait()
+        if self.process:
+            self.end_whitenoise()
+            return True
+        return False
 
 
 def create_skill():
