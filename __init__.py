@@ -71,7 +71,7 @@ class WhitenoiseSkill(MycroftSkill):
 
     @intent_handler(IntentBuilder('').require('Whitenoise'))
     def handle_whitenoise(self, message):
-        path = random.choice(self.play_list)
+        path = random.choice(self.play_list_all)
         try:
             self.speak_dialog('whitenoise.response')
             wait_while_speaking()
